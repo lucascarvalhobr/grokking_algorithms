@@ -1,2 +1,2 @@
-# grokking_algorithms
+# Grokking Algorithms
 Code exercises from Grokking Algorithms book
