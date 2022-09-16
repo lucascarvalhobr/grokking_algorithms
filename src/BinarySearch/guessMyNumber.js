@@ -1,27 +1,30 @@
 import generateLargeNumberArray from "../Arrays/arrayGenerator.js";
 
-var largeArray = generateLargeNumberArray(10000000);
+var largeArray = generateLargeNumberArray(10);
 
-const mySecretNumber = 100;
+const mySecretNumber = 2;
 
 simpleSearch();
 binarySearch();
 
 function binarySearch() {
-  let limit = largeArray.length;
-  let currentIndex = largeArray.length / 2 - 1;
-  let attempts = 0;
+  let right = largeArray.length - 1;
+  let mid = 0,
+    left = 0;
+  let attempts = 1;
 
   while (true) {
-    attempts++;
-    let value = largeArray[currentIndex];
+    mid = Math.round((right + left) / 2);
+
+    let value = largeArray[mid];
     if (value === mySecretNumber) break;
     if (value < mySecretNumber) {
-      currentIndex = Math.floor((limit + currentIndex) / 2);
+      left = mid;
     } else {
-      limit = currentIndex;
-      currentIndex = Math.floor(currentIndex / 2);
+      right = mid;
     }
+    
+    attempts++;
   }
 
   console.log("Total attempts with binary search: " + attempts);
